@@ -146,13 +146,13 @@ tidyData <- function ()
   meanAndStdDataWithActivityName <- merge(activityLabel, meanAndStdData, by="activity_id")
   
   # 8. Save the data frame to a file.
-  write.table(meanAndStdDataWithActivityName, "tidy_mean_and_std.txt")
+  write.table(meanAndStdDataWithActivityName, "tidy_mean_and_std.txt", row.names = FALSE)
 
   # 9. Get the average for the mean and std columns aggregating on subject_id and activity_id.
   avgMeanAndStd <- aggregate(. ~subject_id + activity_id + activity_name, meanAndStdDataWithActivityName, FUN=mean)
   
   # 10. Save the average mean and std by subject and activity to a file
-  write.table(avgMeanAndStd, "tidy_average_mean_and_std.txt")
+  write.table(avgMeanAndStd, "tidy_average_mean_and_std.txt", row.names = FALSE)
 }
 
 tidyData()
